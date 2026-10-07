@@ -1,0 +1,154 @@
+.filters-card {
+  background: #ffffff;
+  border-radius: 16px;
+  padding: 1rem;
+  border: 1px solid rgba(226, 232, 240, 0.8);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.04);
+  position: sticky;
+  top: 80px;
+}
+
+.filters-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1rem;
+}
+
+.header-title {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.header-title h3 {
+  margin: 0;
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: #0f172a;
+}
+
+.filter-header-icon {
+  color: #be123c;
+  font-size: 22px;
+  width: 22px;
+  height: 22px;
+}
+
+.active-badge {
+  background: #ffe4e6;
+  color: #be123c;
+  font-size: 0.75rem;
+  font-weight: 600;
+  padding: 2px 8px;
+  border-radius: 12px;
+}
+
+.reset-btn {
+  font-size: 0.8rem !important;
+  font-weight: 600 !important;
+  padding: 0 8px !important;
+  min-width: auto !important;
+  height: 28px !important;
+  line-height: 28px !important;
+}
+
+.filter-section {
+  padding: 1.1rem 0;
+}
+
+.filter-label-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 0.75rem;
+}
+
+.filter-label {
+  display: block;
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: #1e293b;
+  margin-bottom: 0.6rem;
+}
+
+.price-val-badge {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: #be123c;
+  background: #fff1f2;
+  border: 1px solid #fecdd3;
+  padding: 2px 10px;
+  border-radius: 12px;
+}
+
+.slider-wrap {
+  padding: 0 4px;
+}
+
+.custom-slider {
+  width: 100%;
+}
+
+.slider-range-labels {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.75rem;
+  color: #64748b;
+  margin-top: -4px;
+}
+
+.stops-list,
+.airlines-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+.stop-checkbox,
+.airline-checkbox {
+  width: 100%;
+}
+
+.stop-label-wrap {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.airline-name {
+  font-size: 0.9rem;
+  color: #334155;
+}
+
+.clear-link-btn {
+  font-size: 0.75rem !important;
+  color: #64748b !important;
+  padding: 0 6px !important;
+  min-width: auto !important;
+  height: 24px !important;
+  line-height: 24px !important;
+}
+
+.sort-field {
+  margin-bottom: -1.25em;
+}
+
+.sort-option {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.88rem;
+}
+
+.sort-option mat-icon {
+  font-size: 18px;
+  width: 18px;
+  height: 18px;
+  color: #64748b;
+}
+
+.w-100 {
+  width: 100%;
+}

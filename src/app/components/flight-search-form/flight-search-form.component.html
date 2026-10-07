@@ -1,0 +1,104 @@
+<div class="search-form-card">
+  <form [formGroup]="searchForm" (ngSubmit)="onSubmit()" class="search-form">
+    <!-- Main Inputs Grid -->
+    <div class="inputs-grid">
+      <!-- Origin -->
+      <mat-form-field appearance="outline" class="grid-field">
+        <mat-label>From</mat-label>
+        <!-- <mat-icon matPrefix class="field-icon">flight_takeoff</mat-icon> -->
+        <mat-select formControlName="from" placeholder="Select Departure City">
+          @for (airport of airports; track airport.code) {
+          <mat-option [value]="airport.code">
+            <span class="airport-code-badge">{{ airport.code }}</span>
+            <span class="airport-label">{{ airport.city }} ({{ airport.name }})</span>
+          </mat-option>
+          }
+        </mat-select>
+        @if (searchForm.get('from')?.touched && searchForm.get('from')?.hasError('required')) {
+        <mat-error>Departure airport is required</mat-error>
+        }
+      </mat-form-field>
+
+      <!-- Swap Button -->
+      <!-- <div class="swap-col">
+        <button type="button" mat-icon-button class="swap-btn" (click)="swapAirports()"
+          matTooltip="Swap Origin & Destination" aria-label="Swap departure and destination">
+          <mat-icon>swap_horiz</mat-icon>
+        </button>
+      </div> -->
+
+      <!-- Destination -->
+      <mat-form-field appearance="outline" class="grid-field">
+        <mat-label>To</mat-label>
+        <!-- <mat-icon matPrefix class="field-icon">flight_land</mat-icon> -->
+        <mat-select formControlName="to" placeholder="Select Destination City">
+          @for (airport of airports; track airport.code) {
+          <mat-option [value]="airport.code">
+            <span class="airport-code-badge">{{ airport.code }}</span>
+            <span class="airport-label">{{ airport.city }} ({{ airport.name }})</span>
+          </mat-option>
+          }
+        </mat-select>
+        @if (searchForm.get('to')?.touched && searchForm.get('to')?.hasError('required')) {
+        <mat-error>Destination airport is required</mat-error>
+        }
+      </mat-form-field>
+
+      <!-- Departure Date -->
+      <mat-form-field appearance="outline" class="grid-field">
+        <mat-label>Departure Date</mat-label>
+        <input matInput [matDatepicker]="depPicker" formControlName="departureDate" placeholder="MM/DD/YYYY" />
+        <mat-datepicker-toggle matIconSuffix [for]="depPicker"></mat-datepicker-toggle>
+        <mat-datepicker #depPicker></mat-datepicker>
+        @if (searchForm.get('departureDate')?.touched && searchForm.get('departureDate')?.hasError('required')) {
+        <mat-error>Departure date is required</mat-error>
+        }
+      </mat-form-field>
+
+      <!-- Return Date -->
+      <mat-form-field appearance="outline" class="grid-field">
+        <mat-label>Return Date</mat-label>
+        <input matInput [matDatepicker]="retPicker" formControlName="returnDate" placeholder="MM/DD/YYYY" />
+        <mat-datepicker-toggle matIconSuffix [for]="retPicker"></mat-datepicker-toggle>
+        <mat-datepicker #retPicker></mat-datepicker>
+      </mat-form-field>
+
+      <!-- Passengers -->
+      <mat-form-field appearance="outline" class="grid-field passengers-field w-passenger">
+        <mat-label>Passengers</mat-label>
+        <mat-icon matPrefix class="field-icon">group</mat-icon>
+        <input matInput type="number" min="1" max="9" formControlName="passengers" placeholder="1" />
+        @if (searchForm.get('passengers')?.touched && searchForm.get('passengers')?.hasError('required')) {
+        <mat-error>Enter passenger count</mat-error>
+        }
+        @if (searchForm.get('passengers')?.hasError('min') || searchForm.get('passengers')?.hasError('max')) {
+        <mat-error>1 to 9 passengers</mat-error>
+        }
+      </mat-form-field>
+
+      <!-- Submit Button -->
+      <div class="submit-col">
+        <button mat-flat-button color="primary" type="submit" class="search-submit-btn"
+          [disabled]="searchForm.invalid || loading">
+          <mat-icon class="submit-icon">search</mat-icon>
+          <span>{{ loading ? 'Searching...' : 'Search' }}</span>
+        </button>
+      </div>
+    </div>
+
+    <!-- Cross-field Error Alerts -->
+    @if (searchForm.errors?.['sameAirport']) {
+    <div class="form-warning-alert">
+      <mat-icon class="alert-icon">warning</mat-icon>
+      <span>Origin and Destination airports cannot be the same.</span>
+    </div>
+    }
+
+    @if (searchForm.errors?.['returnBeforeDeparture']) {
+    <div class="form-warning-alert">
+      <mat-icon class="alert-icon">warning</mat-icon>
+      <span>Return date must be on or after the departure date.</span>
+    </div>
+    }
+  </form>
+</div>

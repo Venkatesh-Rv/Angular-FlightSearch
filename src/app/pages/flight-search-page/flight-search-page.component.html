@@ -1,0 +1,119 @@
+<div class="search-page-container">
+  <!-- Top Header Section -->
+  <section class="hero-section">
+    <div class="hero-content">
+      <span class="hero-tag">
+        <mat-icon class="tag-icon">travel_explore</mat-icon> Flight Search
+      </span>
+      <h1 class="hero-title">Flight Search Application</h1>
+    </div>
+
+    <!-- Search Form Reusable Component -->
+    <div class="search-form-wrapper">
+      <app-flight-search-form
+        [airports]="(airports$ | async) || []"
+        [loading]="(loading$ | async) || false"
+        (search)="onSearch($event)"
+      ></app-flight-search-form>
+    </div>
+  </section>
+
+  <!-- Loading Bar Indicator -->
+  @if (loading$ | async) {
+    <div class="loading-bar-wrap">
+      <mat-progress-bar mode="indeterminate" color="primary"></mat-progress-bar>
+      <div class="loading-text">
+        <mat-icon class="spin-icon">sync</mat-icon> Searching flight routes and live fares...
+      </div>
+    </div>
+  }
+
+  <!-- Error Message Banner (Demonstrates Requirement #2) -->
+  @if (error$ | async; as errorMsg) {
+    <div class="error-banner">
+      <div class="error-msg-content">
+        <mat-icon class="error-icon">error_outline</mat-icon>
+        <div>
+          <h3 class="error-heading">API Communication Error</h3>
+          <p class="error-desc">{{ errorMsg }}</p>
+        </div>
+      </div>
+      <button mat-flat-button color="warn" class="retry-btn" (click)="onRetry()">
+        <mat-icon>refresh</mat-icon> Retry Request
+      </button>
+    </div>
+  }
+
+  <!-- Main Search Results & Filters Section -->
+  @if ((error$ | async) === null) {
+    <div class="results-layout">
+      <!-- Left: Filters Sidebar Reusable Component -->
+      <aside class="filters-sidebar">
+        @if (filterCriteria$ | async; as filters) {
+          <app-flight-filters
+            [availableAirlines]="(availableAirlines$ | async) || []"
+            [initialFilters]="filters"
+            [totalCount]="((flights$ | async) || []).length"
+            (filterChange)="onFilterChange($event)"
+            (reset)="onResetFilters()"
+          ></app-flight-filters>
+        }
+      </aside>
+
+      <!-- Right: Flight Cards & List Area -->
+      <main class="results-main">
+        <!-- Results Header Info -->
+        <div class="results-summary-bar">
+          <div class="summary-left">
+            @if (searchParams$ | async; as params) {
+              <h2 class="route-heading">
+                {{ params.from }} ➔ {{ params.to }} Flights
+              </h2>
+              <div class="route-sub-meta">
+                <span>{{ params.passengers }} Passenger(s)</span>
+              </div>
+            } @else {
+              <h2 class="route-heading">Available Flights</h2>
+            }
+          </div>
+
+          <div class="summary-right">
+            @if (flights$ | async; as flights) {
+              <span class="count-badge">
+                <strong>{{ flights.length }}</strong> flights found
+              </span>
+            }
+          </div>
+        </div>
+
+        <!-- Flight Cards List -->
+        @if (flights$ | async; as flights) {
+          @if (flights.length > 0) {
+            <div class="flights-list">
+              @for (flight of flights; track flight.id) {
+                <app-flight-card
+                  [flight]="flight"
+                  (viewDetails)="openFlightDetails($event)"
+                ></app-flight-card>
+              }
+            </div>
+          } @else if (!(loading$ | async)) {
+            <!-- Empty Results State -->
+            <div class="empty-state-card">
+              <div class="empty-icon-wrap">
+                <mat-icon class="empty-icon">flight_takeoff</mat-icon>
+              </div>
+              <h3>No flights match your filters</h3>
+              <p>
+                Try widening your price range, including connecting stops, or clearing airline filters to see available flights.
+              </p>
+              <button mat-flat-button color="primary" class="reset-empty-btn" (click)="onResetFilters()">
+                <mat-icon>tune</mat-icon> Reset Filters
+              </button>
+            </div>
+          }
+        }
+      </main>
+    </div>
+  }
+</div>

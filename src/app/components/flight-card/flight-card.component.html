@@ -1,0 +1,90 @@
+<div class="flight-card" [id]="'flight-' + flight.id">
+  <!-- Card Left & Center: Itinerary Information -->
+  <div class="card-main">
+    <!-- Top row: Airline & Flight Number -->
+    <div class="airline-row">
+      <div class="airline-badge">
+        <span
+          class="airline-dot"
+          [style.backgroundColor]="flight.airlineColor || '#be123c'"
+        ></span>
+        <span class="airline-name">{{ flight.airline }}</span>
+        <span class="flight-code">{{ flight.flightNumber }}</span>
+      </div>
+
+      <div class="flight-tags">
+        <span class="aircraft-tag">{{ flight.aircraft }}</span>
+      </div>
+    </div>
+
+    <!-- Center row: Origin -> Route Visual -> Destination -->
+    <div class="flight-timeline">
+      <!-- Departure -->
+      <div class="time-block departure">
+        <span class="time-text">{{ formatTime(flight.departureTime) }}</span>
+        <span class="airport-code">{{ flight.origin.code }}</span>
+        <span class="city-name">{{ flight.origin.city }}</span>
+      </div>
+
+      <!-- Route Graphic -->
+      <div class="route-graphic">
+        <div class="duration-text">{{ flight.duration }}</div>
+        <div class="flight-line">
+          <div class="line-dot start"></div>
+          <div class="line-track"></div>
+          <mat-icon class="plane-icon">flight</mat-icon>
+          <div class="line-dot end"></div>
+        </div>
+        <div class="stops-indicator">
+          @if (flight.stops === 0) {
+            <span class="stop-badge non-stop">Non-stop</span>
+          } @else if (flight.stops === 1) {
+            <span class="stop-badge one-stop" [matTooltip]="flight.layoverDetails || '1 Stop'">
+              1 Stop ({{ getLayoverCity(flight.layoverDetails) }})
+            </span>
+          } @else {
+            <span class="stop-badge multi-stop" [matTooltip]="flight.layoverDetails || '2 Stops'">
+              {{ flight.stops }} Stops
+            </span>
+          }
+        </div>
+      </div>
+
+      <!-- Arrival -->
+      <div class="time-block arrival">
+        <div class="arrival-time-row">
+          <span class="time-text">{{ formatTime(flight.arrivalTime) }}</span>
+          @if (isNextDay(flight.departureTime, flight.arrivalTime)) {
+            <span class="next-day-pill">+1 day</span>
+          }
+        </div>
+        <span class="airport-code">{{ flight.destination.code }}</span>
+        <span class="city-name">{{ flight.destination.city }}</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Card Right: Price and Details Action -->
+  <div class="card-pricing">
+    <div class="price-header">
+      <span class="from-text">from</span>
+      <div class="price-amount">
+        <span class="currency-symbol">$</span>
+        <span class="main-price">{{ flight.price }}</span>
+      </div>
+      <span class="price-sub">total per passenger</span>
+    </div>
+
+    <div class="action-buttons">
+      <button
+        mat-flat-button
+        color="primary"
+        class="details-btn"
+        (click)="onViewDetails()"
+        [id]="'details-btn-' + flight.id"
+      >
+        <mat-icon>info</mat-icon> Details
+      </button>
+    </div>
+  </div>
+</div>

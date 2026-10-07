@@ -1,0 +1,106 @@
+<div class="filters-card">
+  <!-- Filters Header -->
+  <div class="filters-header">
+    <div class="header-title">
+      <mat-icon class="filter-header-icon">tune</mat-icon>
+      <h3>Filters</h3>
+      @if (getActiveFilterCount() > 0) {
+      <span class="active-badge">{{ getActiveFilterCount() }} active</span>
+      }
+    </div>
+    @if (getActiveFilterCount() > 0) {
+    <button mat-button color="warn" class="reset-btn" (click)="onReset()">
+      Reset all
+    </button>
+    }
+  </div>
+
+  <mat-divider></mat-divider>
+
+  <!-- Sort By -->
+  <!-- <div class="filter-section">
+    <label class="filter-label">Sort Results By</label>
+    <mat-form-field appearance="outline" class="w-100 sort-field">
+      <mat-select [formControl]="filterForm.controls.sortBy">
+        <mat-option value="priceAsc">
+          <div class="sort-option">
+            <mat-icon>arrow_upward</mat-icon> Price: Lowest first
+          </div>
+        </mat-option>
+        <mat-option value="priceDesc">
+          <div class="sort-option">
+            <mat-icon>arrow_downward</mat-icon> Price: Highest first
+          </div>
+        </mat-option>
+        <mat-option value="durationAsc">
+          <div class="sort-option">
+            <mat-icon>schedule</mat-icon> Fastest Duration
+          </div>
+        </mat-option>
+        <mat-option value="departureAsc">
+          <div class="sort-option">
+            <mat-icon>flight_takeoff</mat-icon> Earliest Departure
+          </div>
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+  </div> -->
+
+  <mat-divider></mat-divider>
+
+  <!-- Filter 1: Price Slider -->
+  <!-- <div class="filter-section">
+    <div class="filter-label-row">
+      <label class="filter-label">Maximum Price</label>
+      <span class="price-val-badge">${{ filterForm.controls.maxPrice.value }}</span>
+    </div>
+    <div class="slider-wrap">
+      <mat-slider min="250" max="1500" step="25" class="custom-slider">
+        <input matSliderThumb [formControl]="filterForm.controls.maxPrice" />
+      </mat-slider>
+      <div class="slider-range-labels">
+        <span>$250</span>
+        <span>$1500</span>
+      </div>
+    </div>
+  </div> -->
+
+  <mat-divider></mat-divider>
+
+  <!-- Filter 2: Number of Stops -->
+  <div class="filter-section">
+    <label class="filter-label">Number of Stops</label>
+    <div class="stops-list">
+      @for (stop of stopOptions; track stop.value) {
+      <mat-checkbox [checked]="isStopSelected(stop.value)" (change)="toggleStop(stop.value, $event.checked)"
+        color="primary" class="stop-checkbox">
+        <div class="stop-label-wrap">
+          <span>{{ stop.label }}</span>
+        </div>
+      </mat-checkbox>
+      }
+    </div>
+  </div>
+
+  <mat-divider></mat-divider>
+
+  <!-- Filter 3: Airline -->
+  <div class="filter-section">
+    <div class="filter-label-row">
+      <label class="filter-label">Airlines</label>
+      @if (selectedAirlines.length > 0) {
+      <button mat-button class="clear-link-btn" (click)="clearAirlineFilter()">
+        Clear
+      </button>
+      }
+    </div>
+    <div class="airlines-list">
+      @for (airline of availableAirlines; track airline) {
+      <mat-checkbox [checked]="isAirlineSelected(airline)" (change)="toggleAirline(airline, $event.checked)"
+        color="primary" class="airline-checkbox">
+        <span class="airline-name">{{ airline }}</span>
+      </mat-checkbox>
+      }
+    </div>
+  </div>
+</div>

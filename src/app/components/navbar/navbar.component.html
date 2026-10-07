@@ -1,0 +1,34 @@
+<mat-toolbar class="app-navbar" color="primary">
+  <div class="nav-container">
+    <a routerLink="/search" class="brand-logo" aria-label="SkyQuest Flights Home">
+      <div class="logo-icon-wrap">
+        <mat-icon class="flight-icon">flight_takeoff</mat-icon>
+      </div>
+      <div class="brand-text">
+        <span class="brand-title">SkyQuest</span>
+        <span class="brand-subtitle">Flight Explorer</span>
+      </div>
+    </a>
+
+    <div class="nav-spacer"></div>
+
+    <div class="nav-actions">
+      <a mat-button routerLink="/search" class="nav-link">
+        <mat-icon>travel_explore</mat-icon>
+        <span class="hide-sm">Search Flights</span>
+      </a>
+
+      <!-- Error simulation trigger for testing requirement #2 -->
+      <button
+        mat-stroked-button
+        [color]="isErrorSimulated() ? 'warn' : ''"
+        class="api-demo-btn"
+        (click)="toggleErrorSimulation()"
+        [matTooltip]="isErrorSimulated() ? 'Click to restore normal API responses' : 'Simulate a REST API server error to test error handling'"
+      >
+        <mat-icon>{{ isErrorSimulated() ? 'error' : 'bolt' }}</mat-icon>
+        <span>{{ isErrorSimulated() ? 'API Error Active' : 'Simulate API Error' }}</span>
+      </button>
+    </div>
+  </div>
+</mat-toolbar>

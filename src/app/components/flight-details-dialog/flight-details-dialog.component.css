@@ -1,0 +1,342 @@
+.dialog-container {
+  padding: 0;
+  max-width: 680px;
+  width: 100%;
+}
+
+.dialog-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1.5rem 1.75rem 1rem;
+  border-bottom: 1px solid #f1f5f9;
+}
+
+.airline-brand {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.airline-indicator {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  display: inline-block;
+  box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.08);
+}
+
+.flight-title {
+  margin: 0;
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #0f172a;
+}
+
+.flight-sub {
+  font-size: 0.82rem;
+  color: #64748b;
+}
+
+.close-btn {
+  color: #64748b;
+}
+
+.dialog-content {
+  padding: 1.5rem 1.75rem !important;
+  max-height: 75vh;
+}
+
+/* Overview Bar */
+.overview-bar {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  background: #f8fafc;
+  border-radius: 12px;
+  padding: 0.85rem 1rem;
+  margin-bottom: 1.5rem;
+  gap: 0.5rem;
+}
+
+.overview-item {
+  display: flex;
+  flex-direction: column;
+}
+
+.item-label {
+  font-size: 0.72rem;
+  color: #64748b;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  font-weight: 600;
+}
+
+.item-val {
+  font-size: 0.92rem;
+  font-weight: 700;
+  color: #1e293b;
+  margin-top: 2px;
+}
+
+.status-confirmed {
+  color: #15803d;
+}
+
+/* Itinerary Timeline */
+.section-title {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 1rem;
+  font-weight: 700;
+  color: #0f172a;
+  margin: 0 0 1rem;
+}
+
+.section-icon {
+  font-size: 20px;
+  width: 20px;
+  height: 20px;
+  color: #be123c;
+}
+
+.itinerary-timeline {
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  padding: 1.25rem 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.timeline-step {
+  display: flex;
+  gap: 1.25rem;
+  align-items: flex-start;
+  position: relative;
+}
+
+.timeline-marker {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.departure-marker {
+  background: #ffe4e6;
+  color: #be123c;
+}
+
+.arrival-marker {
+  background: #e0f2fe;
+  color: #0284c7;
+}
+
+.timeline-marker mat-icon {
+  font-size: 18px;
+  width: 18px;
+  height: 18px;
+}
+
+.timeline-detail {
+  flex: 1 1 auto;
+}
+
+.step-time-row {
+  display: flex;
+  align-items: baseline;
+  gap: 0.75rem;
+}
+
+.step-time {
+  font-size: 1.25rem;
+  font-weight: 800;
+  color: #0f172a;
+}
+
+.step-date {
+  font-size: 0.8rem;
+  color: #64748b;
+}
+
+.step-location {
+  display: flex;
+  flex-direction: column;
+  margin-top: 2px;
+}
+
+.location-name {
+  font-size: 0.95rem;
+  color: #1e293b;
+}
+
+.terminal-text {
+  font-size: 0.8rem;
+  color: #64748b;
+}
+
+.timeline-layover {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  background: #fffbeb;
+  border-left: 3px solid #f59e0b;
+  padding: 0.6rem 1rem;
+  border-radius: 6px;
+  margin: 1rem 0 1rem 1rem;
+  font-size: 0.85rem;
+  color: #92400e;
+}
+
+.layover-icon {
+  font-size: 18px;
+  width: 18px;
+  height: 18px;
+  color: #d97706;
+}
+
+/* Specs Grid */
+.specs-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.spec-card {
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  padding: 1rem 1.25rem;
+}
+
+.spec-heading {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.9rem;
+  font-weight: 700;
+  margin: 0 0 0.75rem;
+  color: #1e293b;
+}
+
+.spec-icon {
+  font-size: 18px;
+  width: 18px;
+  height: 18px;
+  color: #be123c;
+}
+
+.spec-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  font-size: 0.85rem;
+  color: #475569;
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.amenities-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+}
+
+.amenity-chip {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  font-size: 0.78rem;
+  background: #ffffff;
+  border: 1px solid #cbd5e1;
+  padding: 3px 8px;
+  border-radius: 20px;
+  color: #334155;
+  font-weight: 500;
+}
+
+.amenity-icon {
+  font-size: 14px;
+  width: 14px;
+  height: 14px;
+  color: #16a34a;
+}
+
+/* Fare Breakdown */
+.fare-section {
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  padding: 1.25rem;
+}
+
+.fare-table {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  font-size: 0.88rem;
+  color: #475569;
+}
+
+.fare-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.total-row {
+  margin-top: 0.4rem;
+  font-size: 1.05rem;
+  color: #0f172a;
+}
+
+.total-price {
+  font-size: 1.35rem;
+  color: #be123c;
+}
+
+/* Actions */
+.dialog-actions {
+  padding: 1rem 1.75rem;
+  border-top: 1px solid #f1f5f9;
+  display: flex;
+  align-items: center;
+}
+
+.action-spacer {
+  flex: 1 1 auto;
+}
+
+.full-page-btn {
+  font-size: 0.82rem !important;
+  color: #64748b !important;
+}
+
+.book-now-btn {
+  background: #be123c !important;
+  color: #ffffff !important;
+  font-weight: 700 !important;
+  border-radius: 8px !important;
+}
+
+@media (max-width: 600px) {
+  .specs-grid,
+  .overview-bar {
+    grid-template-columns: 1fr;
+  }
+
+  .dialog-actions {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .full-page-btn,
+  .action-spacer {
+    display: none;
+  }
+}

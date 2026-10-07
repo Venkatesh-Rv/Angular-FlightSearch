@@ -1,0 +1,264 @@
+.search-page-container {
+  min-height: calc(100vh - 64px);
+  background: #f8fafc;
+  padding-bottom: 4rem;
+}
+
+/* Hero Section */
+.hero-section {
+  background: linear-gradient(180deg, #fff1f2 0%, #fce7f3 40%, #f8fafc 100%);
+  padding: 3rem 1.5rem 2rem;
+  border-bottom: 1px solid rgba(244, 63, 94, 0.1);
+}
+
+.hero-content {
+  max-width: 900px;
+  margin: 0 auto 2rem;
+  text-align: center;
+}
+
+.hero-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-size: 0.82rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: #be123c;
+  background: #ffe4e6;
+  padding: 4px 14px;
+  border-radius: 20px;
+  margin-bottom: 1rem;
+}
+
+.tag-icon {
+  font-size: 16px;
+  width: 16px;
+  height: 16px;
+}
+
+.hero-title {
+  font-size: 2.6rem;
+  font-weight: 850;
+  color: #0f172a;
+  letter-spacing: -0.03em;
+  line-height: 1.15;
+  margin: 0 0 0.75rem;
+}
+
+.hero-subtitle {
+  font-size: 1.1rem;
+  color: #475569;
+  max-width: 650px;
+  margin: 0 auto;
+  line-height: 1.5;
+}
+
+.search-form-wrapper {
+  max-width: 1240px;
+  margin: 0 auto;
+}
+
+/* Loading Bar */
+.loading-bar-wrap {
+  max-width: 1240px;
+  margin: 1.5rem auto 0;
+  padding: 0 1.5rem;
+}
+
+.loading-text {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  font-size: 0.88rem;
+  color: #be123c;
+  font-weight: 600;
+  margin-top: 0.75rem;
+}
+
+.spin-icon {
+  animation: spin 1.2s linear infinite;
+  font-size: 18px;
+  width: 18px;
+  height: 18px;
+}
+
+@keyframes spin {
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+/* Error Banner */
+.error-banner {
+  max-width: 1240px;
+  margin: 1.5rem auto;
+  padding: 1.25rem 1.75rem;
+  background: #fef2f2;
+  border: 1px solid #f87171;
+  border-radius: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  box-shadow: 0 4px 12px rgba(239, 68, 68, 0.1);
+  gap: 1rem;
+}
+
+.error-msg-content {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.error-icon {
+  font-size: 32px;
+  width: 32px;
+  height: 32px;
+  color: #dc2626;
+}
+
+.error-heading {
+  margin: 0;
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: #991b1b;
+}
+
+.error-desc {
+  margin: 2px 0 0;
+  font-size: 0.9rem;
+  color: #b91c1c;
+}
+
+.retry-btn {
+  font-weight: 700 !important;
+  border-radius: 8px !important;
+  flex-shrink: 0;
+}
+
+/* Layout */
+.results-layout {
+  display: grid;
+  grid-template-columns: 290px 1fr;
+  gap: 2rem;
+  max-width: 1240px;
+  margin: 2rem auto 0;
+  padding: 0 1.5rem;
+  align-items: start;
+}
+
+.filters-sidebar {
+  width: 100%;
+}
+
+.results-main {
+  width: 100%;
+}
+
+/* Summary Bar */
+.results-summary-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1.25rem;
+  background: #ffffff;
+  padding: 1rem 1.5rem;
+  border-radius: 14px;
+  border: 1px solid rgba(226, 232, 240, 0.8);
+}
+
+.route-heading {
+  margin: 0;
+  font-size: 1.35rem;
+  font-weight: 800;
+  color: #0f172a;
+  letter-spacing: -0.02em;
+}
+
+.route-sub-meta {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.82rem;
+  color: #64748b;
+  margin-top: 2px;
+}
+
+.meta-dot {
+  font-weight: 700;
+}
+
+.count-badge {
+  font-size: 0.9rem;
+  color: #334155;
+  background: #f1f5f9;
+  padding: 6px 14px;
+  border-radius: 20px;
+  font-weight: 500;
+}
+
+.count-badge strong {
+  color: #be123c;
+  font-weight: 700;
+}
+
+/* Empty State */
+.empty-state-card {
+  background: #ffffff;
+  border-radius: 18px;
+  border: 1px dashed #cbd5e1;
+  padding: 3.5rem 2rem;
+  text-align: center;
+  margin-top: 1rem;
+}
+
+.empty-icon-wrap {
+  width: 64px;
+  height: 64px;
+  background: #ffe4e6;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 1.25rem;
+}
+
+.empty-icon {
+  font-size: 32px;
+  width: 32px;
+  height: 32px;
+  color: #be123c;
+}
+
+.empty-state-card h3 {
+  margin: 0 0 0.5rem;
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #0f172a;
+}
+
+.empty-state-card p {
+  color: #64748b;
+  max-width: 440px;
+  margin: 0 auto 1.5rem;
+  font-size: 0.92rem;
+  line-height: 1.5;
+}
+
+.reset-empty-btn {
+  font-weight: 700 !important;
+  border-radius: 10px !important;
+}
+
+@media (max-width: 980px) {
+  .results-layout {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+
+  .hero-title {
+    font-size: 2rem;
+  }
+}

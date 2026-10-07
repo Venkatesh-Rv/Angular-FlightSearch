@@ -1,0 +1,156 @@
+<div class="dialog-container">
+  <!-- Dialog Header -->
+  <div class="dialog-header">
+    <div class="airline-brand">
+      <span class="airline-indicator" [style.backgroundColor]="flight.airlineColor || '#be123c'"></span>
+      <div>
+        <h2 class="flight-title">{{ flight.airline }} · {{ flight.flightNumber }}</h2>
+        <span class="flight-sub">{{ flight.origin.city }} to {{ flight.destination.city }}</span>
+      </div>
+    </div>
+
+    <button mat-icon-button mat-dialog-close class="close-btn" aria-label="Close dialog">
+      <mat-icon>close</mat-icon>
+    </button>
+  </div>
+
+  <mat-dialog-content class="dialog-content">
+    <!-- Quick Overview Bar -->
+    <div class="overview-bar">
+      <div class="overview-item">
+        <span class="item-label">Aircraft</span>
+        <span class="item-val">{{ flight.aircraft }}</span>
+      </div>
+      <div class="overview-item">
+        <span class="item-label">Cabin Class</span>
+        <span class="item-val">{{ flight.cabinClass }}</span>
+      </div>
+      <div class="overview-item">
+        <span class="item-label">Duration</span>
+        <span class="item-val">{{ flight.duration }}</span>
+      </div>
+      <div class="overview-item">
+        <span class="item-label">Status</span>
+        <span class="item-val status-confirmed">On Schedule</span>
+      </div>
+    </div>
+
+    <!-- Segment Itinerary Timeline -->
+    <div class="itinerary-timeline">
+      <h3 class="section-title">
+        <mat-icon class="section-icon">schedule</mat-icon> Flight Timeline
+      </h3>
+
+      <!-- Origin Step -->
+      <div class="timeline-step">
+        <div class="timeline-marker departure-marker">
+          <mat-icon>flight_takeoff</mat-icon>
+        </div>
+        <div class="timeline-detail">
+          <div class="step-time-row">
+            <span class="step-time">{{ formatTime(flight.departureTime) }}</span>
+            <span class="step-date">{{ formatDate(flight.departureTime) }}</span>
+          </div>
+          <div class="step-location">
+            <strong class="location-name">{{ flight.origin.city }} ({{ flight.origin.code }})</strong>
+            <span class="terminal-text">{{ flight.origin.name }}</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Layover (if any) -->
+      <!-- @if (flight.stops > 0) {
+      <div class="timeline-layover">
+        <mat-icon class="layover-icon">hourglass_top</mat-icon>
+        <div class="layover-text">
+          <strong>Layover:</strong> {{ flight.layoverDetails || (flight.stops + ' connection stop(s)') }}
+        </div>
+      </div>
+      } -->
+      <br>
+
+      <!-- Destination Step -->
+      <div class="timeline-step">
+        <div class="timeline-marker arrival-marker">
+          <mat-icon>flight_land</mat-icon>
+        </div>
+        <div class="timeline-detail">
+          <div class="step-time-row">
+            <span class="step-time">{{ formatTime(flight.arrivalTime) }}</span>
+            <span class="step-date">{{ formatDate(flight.arrivalTime) }}</span>
+          </div>
+          <div class="step-location">
+            <strong class="location-name">{{ flight.destination.city }} ({{ flight.destination.code }})</strong>
+            <span class="terminal-text">{{ flight.destination.name }}</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Baggage & Amenities Grid -->
+    <div class="specs-grid">
+      <!-- Baggage Box -->
+      <div class="spec-card">
+        <h4 class="spec-heading">
+          <mat-icon class="spec-icon">luggage</mat-icon> Baggage Allowance
+        </h4>
+        <ul class="spec-list">
+          <li><strong>Cabin Baggage:</strong> {{ flight.baggage.cabin }}</li>
+          <li><strong>Checked Baggage:</strong> {{ flight.baggage.checked }}</li>
+        </ul>
+      </div>
+
+      <!-- In-flight Amenities Box -->
+      <div class="spec-card">
+        <h4 class="spec-heading">
+          <mat-icon class="spec-icon">room_service</mat-icon> In-flight Amenities
+        </h4>
+        <div class="amenities-chips">
+          @for (amenity of flight.amenities; track amenity) {
+          <span class="amenity-chip">
+            <mat-icon class="amenity-icon">check</mat-icon> {{ amenity }}
+          </span>
+          }
+        </div>
+      </div>
+    </div>
+
+    <!-- Fare Breakdown Section -->
+    <!-- <div class="fare-section">
+      <h3 class="section-title">
+        <mat-icon class="section-icon">receipt_long</mat-icon> Fare Breakdown
+      </h3>
+      <div class="fare-table">
+        <div class="fare-row">
+          <span>Base Airfare (1 Adult)</span>
+          <span>${{ flight.fareBreakdown.baseFare }}</span>
+        </div>
+        <div class="fare-row">
+          <span>Airport Taxes & Government Fees</span>
+          <span>${{ flight.fareBreakdown.taxesAndFees }}</span>
+        </div>
+        <div class="fare-row">
+          <span>Airline Fuel & Security Surcharge</span>
+          <span>${{ flight.fareBreakdown.serviceFee }}</span>
+        </div>
+        <mat-divider></mat-divider>
+        <div class="fare-row total-row">
+          <strong>Total Amount</strong>
+          <strong class="total-price">${{ flight.fareBreakdown.total }}</strong>
+        </div>
+      </div>
+    </div> -->
+  </mat-dialog-content>
+
+  <!-- Dialog Actions Footer -->
+  <!-- <mat-dialog-actions class="dialog-actions">
+    <button mat-button (click)="navigateToFullPage()" class="full-page-btn">
+      <mat-icon>open_in_new</mat-icon> View Full Itinerary Page
+    </button>
+    <div class="action-spacer"></div>
+    <button mat-button mat-dialog-close>Close</button>
+    <button mat-flat-button color="primary" class="book-now-btn" (click)="bookFlight()">
+      Select Flight (${{ flight.price }})
+    </button>
+  </mat-dialog-actions> -->
+</div>

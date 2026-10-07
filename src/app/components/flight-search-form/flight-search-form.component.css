@@ -1,0 +1,165 @@
+.search-form-card {
+  background: #ffffff;
+  border-radius: 20px;
+  padding: 1.75rem 2rem;
+  box-shadow: 0 10px 30px -5px rgba(0, 0, 0, 0.08), 0 0 1px rgba(0, 0, 0, 0.12);
+  border: 1px solid rgba(226, 232, 240, 0.8);
+  position: relative;
+  transition: box-shadow 0.3s ease;
+}
+
+.search-form-card:hover {
+  box-shadow: 0 16px 36px -6px rgba(0, 0, 0, 0.12), 0 0 1px rgba(0, 0, 0, 0.15);
+}
+
+/* Main Grid Layout */
+.inputs-grid {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  /* display: grid;
+  grid-template-columns: minmax(180px, 1.4fr) auto minmax(180px, 1.4fr) minmax(150px, 1fr) minmax(150px, 1fr) minmax(120px, 0.8fr) minmax(160px, 1.1fr); */
+  gap: 0.75rem;
+
+}
+
+.grid-field {
+  width: 100%;
+}
+
+.w-passenger {
+  width: 40vw !important;
+}
+
+.field-icon {
+  color: #be123c;
+  margin-right: 0.5rem;
+  font-size: 20px;
+  width: 20px;
+  height: 20px;
+}
+
+.airport-code-badge {
+  font-weight: 700;
+  color: #be123c;
+  background: #ffe4e6;
+  padding: 2px 6px;
+  border-radius: 4px;
+  font-size: 0.8rem;
+  margin-right: 0.5rem;
+  letter-spacing: 0.05em;
+}
+
+.airport-label {
+  font-size: 0.9rem;
+  color: #334155;
+}
+
+.swap-col {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: -1.25rem;
+}
+
+.swap-btn {
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  color: #64748b;
+  width: 40px;
+  height: 40px;
+  transition: all 0.2s ease;
+}
+
+.swap-btn:hover {
+  background: #ffe4e6;
+  color: #be123c;
+  border-color: #fda4af;
+  transform: rotate(180deg);
+}
+
+.submit-col {
+  display: flex;
+  align-items: center;
+  margin-top: -1.25rem;
+  width: max-content;
+}
+
+.search-submit-btn {
+  height: 54px !important;
+  width: 100%;
+  border-radius: 12px !important;
+  font-size: 1rem !important;
+  font-weight: 600 !important;
+  letter-spacing: 0.01em;
+  background: linear-gradient(135deg, #be123c 0%, #9f1239 100%) !important;
+  box-shadow: 0 4px 14px rgba(190, 18, 60, 0.35) !important;
+  transition: all 0.25s ease !important;
+}
+
+.search-submit-btn:hover:not([disabled]) {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(190, 18, 60, 0.45) !important;
+}
+
+.submit-icon {
+  margin-right: 6px;
+}
+
+/* Warnings */
+.form-warning-alert {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-top: 0.75rem;
+  padding: 0.6rem 1rem;
+  background: #fef2f2;
+  border: 1px solid #fecaca;
+  color: #b91c1c;
+  border-radius: 8px;
+  font-size: 0.88rem;
+  font-weight: 500;
+}
+
+.alert-icon {
+  font-size: 18px;
+  width: 18px;
+  height: 18px;
+  color: #dc2626;
+}
+
+/* Responsive adjustments */
+@media (max-width: 1100px) {
+  .inputs-grid {
+    grid-template-columns: 1fr auto 1fr;
+    grid-template-rows: auto auto;
+  }
+
+  .swap-col {
+    margin-top: 0;
+  }
+
+  .submit-col {
+    grid-column: 1 / -1;
+    margin-top: 0;
+  }
+}
+
+@media (max-width: 768px) {
+  .search-form-card {
+    padding: 1.25rem 1rem;
+  }
+
+  .inputs-grid {
+    grid-template-columns: 1fr;
+    gap: 0.25rem;
+  }
+
+  .swap-col {
+    display: none;
+  }
+
+  .submit-col {
+    margin-top: 0.5rem;
+  }
+}
