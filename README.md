@@ -7,7 +7,7 @@ This is a task/project about a **Flight Search** application.
 ## Overview
 
 A modern Angular application for searching and filtering flights:
-- **Flight Search Form**: Search one-way or round-trip flights by origin, destination, dates, passengers, and cabin class.
+- **Flight Search Form**: Search flights by origin, destination, dates, passengers, and cabin class.
 - **Filtering**: Filter search results by price range, number of stops, airlines, and departure times.
 - **Flight Results & Details**: Flight cards with detailed schedule, airline info, and expandable/modal flight details.
 
